@@ -60,18 +60,18 @@ You can do it from a command line as such:
 	
 If you have a git installed:
 
-	git clone https://github.com/UnityBaseJS/benchmark.git
+	git clone https://github.com/UnityBaseJS/benchmarks.git
 
 If you have a powershell:
 
-	powershell -Command Invoke-WebRequest -OutFile benchmark.zip https://github.com/UnityBaseJS/ub-jsdoc/archive/master.zip
-	powershell -Command Expand-Archive benchmark.zip t
-	move .\t\benchmark-master .\benchmark
+	powershell -Command Invoke-WebRequest -OutFile benchmarks.zip https://github.com/UnityBaseJS/benchmarks/archive/master.zip
+	powershell -Command Expand-Archive benchmarks.zip t
+	move .\t\benchmarks-master .\benchmarks
 	rmdir .\t
 
 Prepare the test suite
 
-	cd benchmark 
+	cd benchmarks
 	.\prepare.cmd
 
 And run an application
@@ -102,24 +102,26 @@ We're using the following physical machine to perform these tests:
  - Xeon E3-1230 @3.3GHz   8Gb RAM (app server & database & load generator on the same machine)
 
 ## Results
-`ab` do not increase the load if threads > 32, so we stop on 32 concurrent thread. Numbers in table is a Requests Per Second
+`ab` do not increase the load if threads > 32, so we stop on 32 concurrent thread. 
+
+Numbers in the table show the Requests Per Second handled by server.
 
 For a Xeon E3 
 
 | url | 8thread | 16 thread | 32 thread |
-| :--- | :--- | :--- | :--- |
-| /dbRaw | 29142 | 36524 | 37895 |
-| /db    |  8100 |  9780 |  10041 |
+| :--- | ---: | ---: | ---: |
+| /dbRaw | 29,142 | 36,524 | 37,895 |
+| /db    |  8,100 |  9,780 |  10,041 |
 
 For a Core i7:
 
 | url | 8thread | 16 thread | 32 thread |
-| :--- | :--- | :--- | :--- |
-| /dbRaw | 15130 | 17800 | 17700 |
-| /db    |  3550 |  3740 |  4475 |
-| /fortunesRaw | 11742 | 13616 |  13195 |
-| /fortunes | 4383 | 5663 |  5550 |
-| /queriesRaw?queries=20 | 14790 | 1508 |  1680 |
+| :--- | ---: | ---: | ---: |
+| /dbRaw | 15,130 | 17,800 | 17,700 |
+| /db    |  3,550 |  3,740 |  4,475 |
+| /fortunesRaw | 11,742 | 13,616 |  13,195 |
+| /fortunes | 4,383 | 5,663 |  5,550 |
+| /queriesRaw?queries=20 | 1,479 | 1,508 |  1,680 |
 | /queries?queries=20 | 302 | 320 |  338 |
 
 Observations - for a Core i7 `ab` take a 100% of one CPU (it can use a singe-cpu only)
@@ -127,7 +129,45 @@ Observations - for a Core i7 `ab` take a 100% of one CPU (it can use a singe-cpu
 
 You can compare results with the [.NET Core tests](https://github.com/aspnet/benchmarks) - [here is the .Net Core results spreadsheet](https://github.com/aspnet/benchmarks/blob/master/results/Results.xlsx)
 
-UnityBase a 1.5 times faster even on the Xeon E5 + `ba` (.Net Core test results are shown for 3 x Xeon E3 computers)
+UnityBase x1.5 times faster even on the Xeon E3 + `ab` (.Net Core test results are shown for 3 x Xeon E5 computers)
 
 ## More than benchmark
+In fact, we got not just a test, but the complete application. 
+During of `prepare.cmd` execution UnityBase take a config `ubConfig.json` [JSON schema of config](https://unitybase.info/models/UB/docson/index.html#../schemas/ubConfig.schema.json)
+and:
 
+ - create a empty database using [cmd/initDB command](https://unitybase.info/api/serverNew/module-cmd_initDB.html)
+ - analyse the [application domain](https://unitybase.info/docs/design.html#Models) and generate a database tables using [cmd/generateDDL](https://unitybase.info/api/serverNew/module-cmd_generateDDL.html) command
+ - fill the initial data for each model, included in the domain using [cmd/initialize](https://unitybase.info/api/serverNew/module-cmd_initialize.html) command
+
+### User interface
+There is a `adminUI` - a Single Page Rich Internet Application. If you already execute a `prapare.cmd` - start a UB in a developer mode with logging enabled by typing
+
+    ub -dev -cfg ubConfigWLog.json
+
+This command will start a UnityBase Application server in a singe thread GUI mode with JavaScript debugger & logging.
+Select `Service -> Run in browser` from a menu and explore a `adminUI` application (Google Chrome required). User user: admin and  pwd: admin.
+
+Everything you will see in the `adminUI` is either generated based on the entity definitions, or customizable directly from the `adminUI`.
+
+### Debugging
+You can debug a server-side JavaScript in the GUI - select a server thread from the ThreadID combo, in the `Source` tab search for the `methods.js`.
+Double click to see the sources. Set a breakpoint inside the `function db`, run a db method from a browser `http://localhost:888/db` and debug a method.
+
+### Security
+For a testing purpose all security are disabled for a techempower endpoints, but all other endpoint is secure - see [this page for details](https://unitybase.info/api/serverNew/tutorial-security.html)
+
+### Database support
+For a simplicity techempower tests executed using build-in SQLite3 database. But you can use PostgreSQL, Oracle or MS SQL.
+Modify a connections section of a config (ubConfig**YourDatabase**.json) file for database you need and ron (sample for a Postgres):
+
+        set UB_CFG=ubConfigPostgre.json
+        set DBA=postgres
+        set DBA_PWD=postgres
+        prepare.cmd
+        ub -cfg ubConfigPostgre.json
+
+See a description of config in the [JSON schema of config].
+
+
+[JSON schema of config]: https://unitybase.info/models/UB/docson/index.html#../schemas/ubConfig.schema.json

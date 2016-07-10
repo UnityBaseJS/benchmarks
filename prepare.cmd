@@ -7,6 +7,14 @@ if not defined UB_HOME (
   echo UB_HOME is not defined. Set default UB_HOME=%UB_HOME%
 )
 
+if not defined DBA (
+  SET DBA=none
+)
+
+if not defined DBA_PWD (
+  SET DBA_PWD=none
+)
+
 SET TESTCASE=init database
 if not defined UB_CFG (
   SET UB_CFG=ubConfig.json
@@ -15,7 +23,7 @@ if not defined UB_CFG (
 
 SET UB_DEV=true
 
-call %UB_HOME%\bin\ub cmd/initDB -host http://localhost:888 -cfg %UB_CFG% -dba nop -dbaPwd nop -u admin -p admin -drop -create
+call %UB_HOME%\bin\ub cmd/initDB -host http://localhost:888 -cfg %UB_CFG% -dba %DBA% -dbaPwd %DBA_PWD% -u admin -p admin -drop -create
 if errorlevel 1 goto err
 
 SET TESTCASE=generateDDL

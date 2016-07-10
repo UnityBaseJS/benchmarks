@@ -53,10 +53,13 @@
 		"connections": [
 			{
 				"name": "main",
-				"driver": "SQLite3",
+				"driver": "Oracle",
+				"statementCacheSize": 30,
 				"isDefault": true,
-				"dialect": "SQLite3",
-				"databaseName": ".\\techempower.sqlite3",
+				"dialect": "Oracle11",
+				"serverName": "(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=ORAIB11N)))",
+				"userID": "ub_tpw",
+				"password": "ub_tpw",
 				"supportLang": [
 					"en"
 				]
@@ -71,7 +74,7 @@
 	},
 	"uiSettings": {
 		"adminUI": {
-			"applicationName": "Techempower(SQLite3)",
+			"applicationName": "Techempower(Oracle)",
 			"defaultPasswordForDebugOnly": "admin",
 			"themeName": "UBGrayTheme"
 		},

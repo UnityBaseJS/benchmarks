@@ -10,7 +10,7 @@
 	},
 	"logging": {
 		"levels": [
-			"Error"
+			"*"
 		],
 		"path": ".\\logs",
 		"rotationSizeInMB": 100

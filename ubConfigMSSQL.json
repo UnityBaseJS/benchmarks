@@ -53,10 +53,13 @@
 		"connections": [
 			{
 				"name": "main",
-				"driver": "SQLite3",
+				"driver": "MSSQL2012OleDB",
 				"isDefault": true,
-				"dialect": "SQLite3",
-				"databaseName": ".\\techempower.sqlite3",
+				"dialect": "MSSQL2012",
+				"serverName": "localhost",
+				"databaseName": "ub_autotest",
+				"userID": "ub_autotest",
+				"password": "ub_autotest",
 				"supportLang": [
 					"en"
 				]
@@ -71,7 +74,7 @@
 	},
 	"uiSettings": {
 		"adminUI": {
-			"applicationName": "Techempower(SQLite3)",
+			"applicationName": "Techempower(Oracle)",
 			"defaultPasswordForDebugOnly": "admin",
 			"themeName": "UBGrayTheme"
 		},

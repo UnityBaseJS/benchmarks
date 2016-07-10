@@ -53,13 +53,17 @@
 		"connections": [
 			{
 				"name": "main",
-				"driver": "SQLite3",
+				"driver": "PostgreSQL",
 				"isDefault": true,
-				"dialect": "SQLite3",
-				"databaseName": ".\\techempower.sqlite3",
+				"dialect": "PostgreSQL",
+				"serverName": "postgresql://localhost:5432",
+				"databaseName": "postgres",
+				"userID": "ub_twp",
+				"password": "ub_twp",
 				"supportLang": [
 					"en"
-				]
+				],
+				"advSettings": "LibLocation=libpq.dll"
 			}
 		],
 		"blobStores": [
@@ -71,7 +75,7 @@
 	},
 	"uiSettings": {
 		"adminUI": {
-			"applicationName": "Techempower(SQLite3)",
+			"applicationName": "Techempower(Oracle)",
 			"defaultPasswordForDebugOnly": "admin",
 			"themeName": "UBGrayTheme"
 		},
