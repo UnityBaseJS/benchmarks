@@ -1,0 +1,24 @@
+{
+	"caption" : "Word",
+	"description" : "Words entity",
+    	"documentation": "Test entity for Techempower",
+	"descriptionAttribute" : "randomNumber",
+	"attributes" : { //blocks for defining attributes
+		"randomNumber": {
+			"dataType" : "Int",
+			"caption" : "randomNumber",
+			"description" : "randomNumber",
+			"allowNull" : false
+		}
+	},
+	"mixins" : {
+		"mStorage" : {
+			"simpleAudit": false, 
+			"safeDelete" : false 
+		},
+		"audit": {
+			"enabled": false
+		}
+	}
+}
+ 

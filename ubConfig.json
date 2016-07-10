@@ -1,0 +1,72 @@
+{
+	"httpServer": {
+		"host": "+",
+		"port": "888",
+		"inetPub": "%UB_HOME%\\Web\\",
+		"watchFileChanges": {
+			"enabled": false,
+			"hashingStrategy": "ModifyDate"
+		}
+	},
+	"logging": {
+		"levels": [
+			"Error"
+		],
+		"path": ".\\logs",
+		"rotationSizeInMB": 100
+	},
+	"security": {
+		"authenticationMethods": [
+			"UB"
+		]
+	},
+	"javascript": {
+		"fullGCPeriod": 100000
+	},
+	"application": {
+		"defaultLang": "en",
+		"rootHandler": "index.html",
+		"domain": {
+			"models": [
+				{
+					"name": "UB",
+					"path": "%UB_HOME%\\models\\UB"
+				},
+				{
+					"name": "UBA",
+					"path": "%UB_HOME%\\models\\UBA"
+				},
+				{
+					"name": "UBS",
+					"path": "%UB_HOME%\\models\\UBS"
+				},
+				{
+					"name": "UBM",
+					"path": "%UB_HOME%\\models\\UBM"
+				},
+				{
+					"name": "TPW",
+					"path": ".\\models\\tpw\\"
+				}
+			]
+		},
+		"connections": [
+			{
+				"name": "main",
+				"driver": "SQLite3",
+				"isDefault": true,
+				"dialect": "SQLite3",
+				"databaseName": ".\\techempower.sqlite3",
+				"supportLang": [
+					"en"
+				]
+			}
+		],
+		"blobStores": [
+			{
+				"name": "mdb",
+				"storeType": "Virtual"
+			}
+		]
+	}
+}

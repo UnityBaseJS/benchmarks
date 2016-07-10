@@ -1,0 +1,25 @@
+{
+	"caption" : "Fortune",
+	"description" : "Fortunes entity",
+    	"documentation": "Test entity for Techempower fortunes test",
+	"descriptionAttribute" : "ID",
+	"attributes" : { 
+		"message": {
+			"dataType" : "String",
+			"size": 128,
+			"caption" : "Message",
+			"description" : "Message",
+			"allowNull" : false
+		}
+	},
+	"mixins" : {
+		"mStorage" : {
+			"simpleAudit": false, 
+			"safeDelete" : false 
+		},
+		"audit": {
+			"enabled": false
+		}
+	}
+}
+ 
