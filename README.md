@@ -141,7 +141,11 @@ and:
  - fill the initial data for each model, included in the domain using [cmd/initialize](https://unitybase.info/api/serverNew/module-cmd_initialize.html) command
 
 ### User interface
-There is a `adminUI` - a Single Page Rich Internet Application. If you already execute a `prapare.cmd` - start a UB in a developer mode with logging enabled by typing
+There is a `adminUI` - a Single Page Rich Internet Application.
+
+![adminUI interface sample](https://github.com/UnityBaseJS/benchmarks/raw/master/img/adminUI.png)
+
+If you already execute a `prapare.cmd` - start a UB in a developer mode with logging enabled by typing
 
     ub -dev -cfg ubConfigWLog.json
 
