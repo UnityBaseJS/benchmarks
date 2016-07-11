@@ -21,7 +21,7 @@ Following are the details of each of the scenarios the server application contai
 | /fortunes | Fortunes ORM | As for the Fortunes raw test above but using UBQL as the ORM. |
 
 ## Setting up the UnityBase
-Download and install the latest UnityBase Standart Edition setup from https://unitybase.info/downloads/UnityBaseSetup.exe
+Download and install the latest UnityBase Standart Edition setup from https://unitybase.info/downloads/UnityBaseSetup.exe (15Mb)
 
 If you have a PowerShell you can do this by typing:
 

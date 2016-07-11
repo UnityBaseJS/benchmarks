@@ -18,7 +18,7 @@ if not defined DBA_PWD (
 SET TESTCASE=init database
 if not defined UB_CFG (
   SET UB_CFG=ubConfig.json
-  A default config %UB_CFG% will be used
+  echo A default config %UB_CFG% will be used
 )
 
 SET UB_DEV=true
