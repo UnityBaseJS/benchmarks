@@ -150,7 +150,7 @@ If you already execute a `prapare.cmd` - start a UB in a developer mode with log
     ub -dev -cfg ubConfigWLog.json
 
 This command will start a UnityBase Application server in a singe thread GUI mode with JavaScript debugger & logging.
-Select `Service -> Run in browser` from a menu and explore a `adminUI` application (Google Chrome required). User user: admin and  pwd: admin.
+Select `Service -> Run in browser` from a menu and explore a `adminUI` application (Google Chrome required). Use user name `admin` and password `admin`.
 
 Everything you will see in the `adminUI` is either generated based on the entity definitions, or customizable directly from the `adminUI`.
 
@@ -159,7 +159,7 @@ You can debug a server-side JavaScript in the GUI - select a server thread from 
 Double click to see the sources. Set a breakpoint inside the `function db`, run a db method from a browser `http://localhost:888/db` and debug a method.
 
 ### Security
-For a testing purpose all security are disabled for a techempower endpoints, but all other endpoint is secure - see [this page for details](https://unitybase.info/api/serverNew/tutorial-security.html)
+For a testing purpose all security are disabled for a techempower endpoints, but all other endpoint are secure - see [this page for details](https://unitybase.info/api/serverNew/tutorial-security.html)
 
 ### Database support
 For a simplicity techempower tests executed using build-in SQLite3 database. But you can use PostgreSQL, Oracle or MS SQL.
