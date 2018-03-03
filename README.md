@@ -1,6 +1,6 @@
-# UnityBase Benchmarking Test
+# UnityBase 1.12 Benchmarking Test
 
-Benchmarks for UnityBase for a scenarios from the [TechEmpower Web Framework Benchmarks](https://www.techempower.com/benchmarks/).
+UnityBase 1.12 Benchmarks for a scenarios from the [TechEmpower Web Framework Benchmarks](https://www.techempower.com/benchmarks/).
 
 # Running the benchmarks
 
